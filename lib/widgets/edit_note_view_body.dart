@@ -4,6 +4,7 @@ import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
+import 'package:notes_app/widgets/edit_note_list_view.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   final NoteModel note;
@@ -33,6 +34,11 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.save();
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Note Updated Successfully'),
+                ),
+              );
             },
           ),
           const SizedBox(
@@ -54,6 +60,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             },
             maxLines: 5,
           ),
+          const SizedBox(
+            height: 16,
+          ),
+          EditNoteColorsListView(note: widget.note)
         ],
       ),
     );

@@ -71,6 +71,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       color: Colors.blue.value,
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Note added successfully'),
+                      ),
+                    );
                   } else {
                     autovalidateMode = AutovalidateMode.always;
 

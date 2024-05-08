@@ -50,6 +50,11 @@ class NoteItem extends StatelessWidget {
                 onPressed: () {
                   note.delete();
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Note Deleted Successfully'),
+                    ),
+                  );
                 },
                 icon: const Icon(
                   FontAwesomeIcons.trash,
