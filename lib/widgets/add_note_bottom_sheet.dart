@@ -65,8 +65,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                print(title);
-                print(subTitle);
               } else {
                 autovalidateMode = AutovalidateMode.always;
 
